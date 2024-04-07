@@ -85,5 +85,14 @@
         stroke: #d36330;
       }
     }
+    .delete-icon {
+      margin-left: 12px;
+      fill: #000;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        fill: #df1c41;
+      }
+    }
   }
 }

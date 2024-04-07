@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 
 import { getIconPath } from "@utils/navigation.service";
-import { addBookmark, queryClient } from "@utils/api.service";
+import { addBookmark, deletePost, queryClient } from "@utils/api.service";
 
 import toast, { Toaster } from "react-hot-toast";
 import { TOASTER_DEFAULT_STYLES } from "@root/constants/toasterDefaultStyles";
@@ -41,6 +41,20 @@ const BlogPostItem = ({ newsItem }) => {
     toast.success(message, TOASTER_DEFAULT_STYLES);
   };
 
+  const handleDeletePost = async () => {
+    try {
+      await deletePost({ id });
+
+      queryClient.invalidateQueries("news");
+      toast.success("Post succesfully deleted.", TOASTER_DEFAULT_STYLES);
+    } catch (error) {
+      toast.error(
+        "An error occurred while deleting the post:",
+        TOASTER_DEFAULT_STYLES
+      );
+    }
+  };
+
   return (
     <>
       <Toaster />
@@ -56,6 +70,11 @@ const BlogPostItem = ({ newsItem }) => {
             src={getIconPath(`${bookmark ? "bookmark2" : "bookmark"}`)}
             className="bookmark-icon"
             onClick={toggleBookmark}
+          />
+          <ReactSVG
+            src={getIconPath("delete")}
+            className="delete-icon"
+            onClick={handleDeletePost}
           />
         </div>
         <BlogPostContent id={id} title={title} text={text} image={image} />
