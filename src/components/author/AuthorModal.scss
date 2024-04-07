@@ -1,0 +1,49 @@
+.author-modal-container {
+  display: flex;
+  padding: 20px;
+  .author-avatar {
+    width: 200px;
+    border-radius: 8px;
+  }
+  .author-info-container {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 16px;
+    .author-fullname {
+      align-self: center;
+      display: flex;
+      align-items: center;
+      font-weight: 550;
+      font-size: 24px;
+      color: #d36330;
+      border-bottom: 2px solid #d36330;
+      .followers {
+        align-self: center;
+        font-size: 12px;
+        color: #d36330;
+        border: 1px solid #d36330;
+        border-radius: 8px;
+        padding: 2px 8px;
+        margin-left: 16px;
+      }
+    }
+    .author-job {
+      align-self: center;
+      font-size: 12px;
+      margin-top: 8px;
+      color: #9d6449;
+      margin-bottom: 10px;
+    }
+
+    .author-info {
+      font-size: 14px;
+      margin-top: 8px;
+      color: #525252;
+    }
+  }
+  .button-wrapper {
+    align-self: center;
+    margin-top: 20px;
+  }
+}

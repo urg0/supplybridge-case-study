@@ -27,8 +27,8 @@ const MainNavigation = () => {
         ))}
       </nav>
       <Button
-        label="Subscribe for $50"
-        icon={getIconPath("dollar")}
+        label="Create new post"
+        icon={getIconPath("add")}
         className="medium orange"
       />
     </div>

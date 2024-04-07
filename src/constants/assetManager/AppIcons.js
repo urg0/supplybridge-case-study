@@ -1,4 +1,7 @@
 import HomeIcon from "@assets/icons/home-page.svg";
+import Bookmark from "@assets/icons/bookmark-empty.svg";
+import Bookmark2 from "@assets/icons/bookmark-filled.svg";
+import BookmarkPage from "@assets/icons/bookmark-page.svg";
 import Bookmarks from "@assets/icons/bookmarks.svg";
 import Linkedin from "@assets/icons/linkedin.svg";
 import Github from "@assets/icons/github.svg";
@@ -10,12 +13,20 @@ import BookResearch from "@assets/icons/book-research.svg";
 import Error404 from "@assets/icons/404.svg";
 import Sad from "@assets/icons/sad.svg";
 import Refresh from "@assets/icons/refresh.svg";
+import Search from "@assets/icons/search.svg";
+import Add from "@assets/icons/add.svg";
 
 class AppIcons {
   static GetIcon(type) {
     switch (type) {
       case "home":
         return HomeIcon;
+      case "bookmark":
+        return Bookmark;
+      case "bookmark2":
+        return Bookmark2;
+      case "bookmark-page":
+        return BookmarkPage;
       case "bookmarks":
         return Bookmarks;
       case "clear":
@@ -38,7 +49,10 @@ class AppIcons {
         return Sad;
       case "refresh":
         return Refresh;
-
+      case "search":
+        return Search;
+      case "add":
+        return Add;
       default:
         return null;
     }
