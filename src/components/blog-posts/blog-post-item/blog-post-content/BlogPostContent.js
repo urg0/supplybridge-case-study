@@ -7,7 +7,7 @@ const BlogPostContent = ({ id, category = "finance", title, text, image }) => {
   const navigate = useNavigate();
 
   const navigateHandler = () => {
-    navigate(`/all-news/${id}?category=${category}`);
+    navigate(`/blog-post/${id}`);
   };
 
   return (

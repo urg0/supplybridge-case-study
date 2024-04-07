@@ -21,10 +21,6 @@ const AuthorCard = ({ date, avatar, fullName, job }) => {
             <span className="job">{job}</span>
           </div>
         </div>
-        <span className="about">
-          about
-          <u className="category">Finance</u>
-        </span>
         <span className="date">•{dateFormatter(date)}</span>
       </div>
       {isAuthorModalOpen && (

@@ -15,6 +15,9 @@ import Sad from "@assets/icons/sad.svg";
 import Refresh from "@assets/icons/refresh.svg";
 import Search from "@assets/icons/search.svg";
 import Add from "@assets/icons/add.svg";
+import Clap from "@assets/icons/clap.svg";
+import Close from "@assets/icons/close.svg";
+import Back from "@assets/icons/back.svg";
 
 class AppIcons {
   static GetIcon(type) {
@@ -53,6 +56,12 @@ class AppIcons {
         return Search;
       case "add":
         return Add;
+      case "clap":
+        return Clap;
+      case "close":
+        return Close;
+      case "back":
+        return Back;
       default:
         return null;
     }
