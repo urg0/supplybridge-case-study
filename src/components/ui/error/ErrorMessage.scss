@@ -1,0 +1,20 @@
+.error-container {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .error-icon {
+    fill: #cc5050;
+  }
+  .error-message-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    color: #cc5050;
+    margin-bottom: 30px;
+    .error-message {
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
+}

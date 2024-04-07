@@ -1,0 +1,47 @@
+.icon {
+  margin-right: 3px;
+}
+.link,
+.link-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  text-decoration: none;
+  margin-right: 35px;
+}
+.link {
+  color: #202020;
+  &:hover {
+    color: #d36330;
+    transform: scale(1.05);
+    .icon {
+      fill: #d36330;
+    }
+    .bookmark-icon {
+      stroke: #d36330;
+    }
+  }
+}
+.link-active {
+  color: #d36330;
+  .icon {
+    fill: #d36330;
+  }
+  .bookmark-icon {
+    stroke: #d36330;
+  }
+}
+.icon {
+  fill: #202020;
+}
+.bookmark-icon {
+  stroke: #202020;
+}
+
+@media screen and (max-width: 1300px) {
+  .link,
+  .link-active {
+    font-size: 10px;
+  }
+}
