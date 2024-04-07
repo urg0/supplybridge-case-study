@@ -42,3 +42,22 @@ export async function addBookmark({ id, bookmark }) {
 
   return response.json();
 }
+
+export async function createPost(postData) {
+  const response = await fetch(eventsUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postData),
+  });
+
+  if (!response.ok) {
+    const error = new Error("An error occurred while creating the post");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+
+  return response.json();
+}

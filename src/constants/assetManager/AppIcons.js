@@ -18,6 +18,7 @@ import Add from "@assets/icons/add.svg";
 import Clap from "@assets/icons/clap.svg";
 import Close from "@assets/icons/close.svg";
 import Back from "@assets/icons/back.svg";
+import NewPost from "@assets/icons/new-post.svg";
 
 class AppIcons {
   static GetIcon(type) {
@@ -62,6 +63,8 @@ class AppIcons {
         return Close;
       case "back":
         return Back;
+      case "new-post":
+        return NewPost;
       default:
         return null;
     }

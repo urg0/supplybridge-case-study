@@ -9,12 +9,14 @@ const Button = ({
   className = "",
   onClick,
   disabled = false,
+  type = "button",
 }) => {
   return (
     <button
       className={`button-container ${className}`}
       onClick={onClick}
       disabled={disabled}
+      type={type}
     >
       {icon && <ReactSVG src={icon} className="button-icon" />}
       <span>{label}</span>

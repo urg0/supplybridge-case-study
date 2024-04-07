@@ -33,7 +33,6 @@
   border: 1px solid #d36330;
   color: #d36330;
   font-size: 13px;
-
   &:hover {
     background-color: #d36330;
     border: 1px solid #d36330;
@@ -92,6 +91,15 @@
   color: #f8f5ed;
   font-size: 13px;
   border-radius: 4px;
+
+  &:disabled {
+    background-color: #d363308c;
+    border-color: #d363308c;
+    cursor: not-allowed;
+    &:hover {
+      background-color: #d363308c;
+    }
+  }
 
   &:hover {
     background-color: rgba(211, 100, 49, 0.85);

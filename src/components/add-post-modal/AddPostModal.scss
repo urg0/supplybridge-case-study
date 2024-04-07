@@ -1,0 +1,36 @@
+.add-post-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  .icon-wrapper {
+    align-self: center;
+    background: linear-gradient(to bottom, #e4e5e7 48%, #f7f8f8 60%, #fff 22%);
+    border-top: 1px solid #e4e5e7;
+    border-right: 1px solid #e4e5e7;
+    border-left: 1px solid #e4e5e7;
+    padding: 16px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+    .headerIcon {
+      background-color: #ffffff;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(27, 28, 29, 0.14);
+    }
+  }
+  .title {
+    font-size: 22px;
+    margin-bottom: 8px;
+    margin-left: 4px;
+    color: #d36330;
+    align-self: center;
+    font-weight: 400;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 12px;
+  }
+}
