@@ -26,7 +26,7 @@ const LandingPage = () => {
         Senior Computer Engineering Student at Bahcesehir University, Front-end
         Developer from Istanbul
       </p>
-      <button className="launch-button" onClick={() => navigate("/home-page")}>
+      <button className="launch-button" onClick={() => navigate("/home")}>
         Start Supply Bridge Case Study
       </button>
     </div>

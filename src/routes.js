@@ -1,6 +1,7 @@
 import { useRoutes } from "react-router-dom";
 
 import LandingPage from "@pages/landing-page/LandingPage";
+import RootPage from "@pages/root/RootPage";
 import HomePage from "@pages/home-page/HomePage";
 
 export const AppRouter = () => {
@@ -9,9 +10,16 @@ export const AppRouter = () => {
       path: "/",
       element: <LandingPage />,
     },
+
     {
-      path: "/home-page",
-      element: <HomePage />,
+      path: "/",
+      element: <RootPage />,
+      children: [
+        {
+          path: "/home",
+          element: <HomePage />,
+        },
+      ],
     },
   ]);
 
