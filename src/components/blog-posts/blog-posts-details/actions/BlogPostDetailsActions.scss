@@ -10,7 +10,7 @@
   padding: 10px 20px;
   padding-right: 0;
   .action-icon {
-    margin-right: 16px;
+    margin-right: 4px;
     fill: #595959;
     cursor: pointer;
     &:hover {
@@ -52,5 +52,29 @@
         margin-left: 4px;
       }
     }
+    .delete-icon {
+      margin-left: 4px;
+      fill: #000;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        fill: #df1c41;
+      }
+    }
+    .edit-icon {
+      margin-left: 4px;
+      fill: #000;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        fill: #d36330;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .news-actions-container {
+    min-width: 150px;
   }
 }

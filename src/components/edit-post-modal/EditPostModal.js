@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useQueryClient } from "@tanstack/react-query";
-import { createPost } from "@utils/api.service";
+import { updatePost } from "@utils/api.service";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -19,20 +19,23 @@ import { ReactSVG } from "react-svg";
 
 import Memoji from "@assets/images/memoji.png";
 
-import "@components/add-post-modal/AddPostModal.scss";
+import "@components/edit-post-modal/EditPostModal.scss";
 
-const AddIcon = getIconPath("new-post");
+const EditIcon = getIconPath("edit");
 
-const AddPostModal = ({ isOpen, onClose }) => {
+const EditPostModal = ({ isOpen, onClose, blogPost }) => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
+  const { id, title, date, text, image, fullName, job, avatar, isBookmarked } =
+    blogPost;
+
   const formik = useFormik({
     initialValues: {
-      fullname: "",
-      title: "",
-      text: "",
-      image: "",
+      fullname: fullName,
+      title: title,
+      text: text,
+      image: image,
     },
     validationSchema: Yup.object({
       fullname: Yup.string().required("Fullname is required"),
@@ -47,27 +50,24 @@ const AddPostModal = ({ isOpen, onClose }) => {
           title: values.title,
           text: values.text,
           image: values.image,
-          avatar: Memoji,
-          job: "Front-end Developer",
+          avatar: avatar,
+          job: job,
           isBookmarked: false,
           date: new Date().toISOString(),
         };
 
-        const response = await createPost(postData);
-
-        const postID = response.id;
+        await updatePost({ id, postData });
 
         queryClient.invalidateQueries({
           queryKey: ["news"],
           refetchType: "all",
         });
         onClose();
-        formik.resetForm();
-        navigate(`/blog-post/${postID}`);
-        toast.success("Post succesfuly added.", TOASTER_DEFAULT_STYLES);
+        navigate(`/blog-post/${id}`);
+        toast.success("Post succesfuly updated.", TOASTER_DEFAULT_STYLES);
       } catch (error) {
         toast.error(
-          "An error occurred while creating the post:",
+          "An error occurred while updating the post:",
           TOASTER_DEFAULT_STYLES
         );
       }
@@ -83,9 +83,9 @@ const AddPostModal = ({ isOpen, onClose }) => {
     <Modal isOpen={isOpen} onClose={onCloseModal}>
       <div className="add-post-modal">
         <div className="icon-wrapper">
-          <ReactSVG src={AddIcon} className="headerIcon" />
+          <ReactSVG src={EditIcon} className="headerIcon" />
         </div>
-        <h2 className="title">Add New Post</h2>
+        <h2 className="title">Edit Post</h2>
         <form onSubmit={formik.handleSubmit} className="form">
           <FormikInput
             label="Fullname"
@@ -104,9 +104,9 @@ const AddPostModal = ({ isOpen, onClose }) => {
             placeholder="Your image"
           />
           <Button
-            label="Create new post"
+            label="Update post"
             className="medium orange"
-            disabled={!formik.isValid}
+            disabled={!formik.isValid || !formik.dirty}
             type="submit"
           />
         </form>
@@ -115,4 +115,4 @@ const AddPostModal = ({ isOpen, onClose }) => {
   );
 };
 
-export default AddPostModal;
+export default EditPostModal;

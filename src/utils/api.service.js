@@ -62,6 +62,25 @@ export async function createPost(postData) {
   return response.json();
 }
 
+export async function updatePost({ id, postData }) {
+  const response = await fetch(`${eventsUrl}/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postData),
+  });
+
+  if (!response.ok) {
+    const error = new Error("An error occurred while updating the post");
+    error.code = response.status;
+    error.info = await response.json();
+    throw error;
+  }
+
+  return response.json();
+}
+
 export async function deletePost({ id }) {
   const response = await fetch(`${eventsUrl}/${id}`, {
     method: "DELETE",

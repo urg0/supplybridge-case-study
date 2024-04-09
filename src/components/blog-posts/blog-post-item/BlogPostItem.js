@@ -10,6 +10,7 @@ import { TOASTER_DEFAULT_STYLES } from "@root/constants/toasterDefaultStyles";
 import AuthorCard from "@components/ui/card/AuthorCard";
 import BlogPostContent from "./blog-post-content/BlogPostContent";
 import ErrorMessage from "@components/ui/error/ErrorMessage";
+import EditPostModal from "@components/edit-post-modal/EditPostModal";
 
 import { ReactSVG } from "react-svg";
 
@@ -20,6 +21,7 @@ const BlogPostItem = ({ newsItem }) => {
     newsItem;
 
   const [bookmark, setBookmark] = useState(isBookmarked);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   /* BUG: Use optimistic updates */
 
@@ -72,6 +74,11 @@ const BlogPostItem = ({ newsItem }) => {
             onClick={toggleBookmark}
           />
           <ReactSVG
+            src={getIconPath("edit")}
+            className="edit-icon"
+            onClick={() => setIsEditModalOpen(true)}
+          />
+          <ReactSVG
             src={getIconPath("delete")}
             className="delete-icon"
             onClick={handleDeletePost}
@@ -80,6 +87,11 @@ const BlogPostItem = ({ newsItem }) => {
         <BlogPostContent id={id} title={title} text={text} image={image} />
       </div>
       {isError && <ErrorMessage refreshButton={true} />}
+      <EditPostModal
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+        blogPost={newsItem}
+      />
     </>
   );
 };

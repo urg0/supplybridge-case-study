@@ -1,19 +1,25 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useMutation } from "@tanstack/react-query";
-import { addBookmark } from "@utils/api.service";
+import { addBookmark, deletePost, queryClient } from "@utils/api.service";
 import { getIconPath } from "@utils/navigation.service";
 
 import toast, { Toaster } from "react-hot-toast";
 import { TOASTER_DEFAULT_STYLES } from "@root/constants/toasterDefaultStyles";
 
+import EditPostModal from "@components/edit-post-modal/EditPostModal";
+
 import { ReactSVG } from "react-svg";
 
 import "@components/blog-posts/blog-posts-details/actions/BlogPostDetailsActions.scss";
 
-const BlogPostDetailsActions = ({ id, isBookmarked }) => {
+const BlogPostDetailsActions = ({ id, isBookmarked, blogPost }) => {
+  const navigate = useNavigate();
+
   const [clapCount, setClapCount] = useState(0);
   const [bookmark, setBookmark] = useState(isBookmarked);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const { mutate, isPending: isBookmarkPending } = useMutation({
     mutationFn: addBookmark,
@@ -38,6 +44,21 @@ const BlogPostDetailsActions = ({ id, isBookmarked }) => {
     setClapCount((prevState) => prevState + 1);
   };
 
+  const handleDeletePost = async () => {
+    try {
+      await deletePost({ id });
+
+      queryClient.invalidateQueries("news");
+      navigate("/home");
+      toast.success("Post succesfully deleted.", TOASTER_DEFAULT_STYLES);
+    } catch (error) {
+      toast.error(
+        "An error occurred while deleting the post:",
+        TOASTER_DEFAULT_STYLES
+      );
+    }
+  };
+
   return (
     <>
       <Toaster />
@@ -51,10 +72,6 @@ const BlogPostDetailsActions = ({ id, isBookmarked }) => {
             />
             <span className="count">{clapCount}</span>
           </div>
-          {/* <div className="action-container">
-            <ReactSVG src={getIconPath("message")} className="message-icon" />
-            <span className="count">0</span>
-          </div> */}
         </div>
         <div className="actions-wrapper">
           <ReactSVG
@@ -62,9 +79,22 @@ const BlogPostDetailsActions = ({ id, isBookmarked }) => {
             className="action-icon"
             onClick={toggleBookmark}
           />
-          <ReactSVG src={getIconPath("share")} className="action-icon" />
-          <ReactSVG src={getIconPath("more")} className="action-icon" />
+          <ReactSVG
+            src={getIconPath("edit")}
+            className="edit-icon"
+            onClick={() => setIsEditModalOpen(true)}
+          />
+          <ReactSVG
+            src={getIconPath("delete")}
+            className="delete-icon"
+            onClick={handleDeletePost}
+          />
         </div>
+        <EditPostModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          blogPost={blogPost}
+        />
       </div>
     </>
   );

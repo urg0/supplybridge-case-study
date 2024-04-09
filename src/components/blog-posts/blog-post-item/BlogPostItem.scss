@@ -1,4 +1,4 @@
-.news-container {
+/* .news-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,7 +58,7 @@
     }
   }
 }
-
+ */
 .horizontal-news-container {
   display: flex;
   flex-direction: column;
@@ -86,12 +86,21 @@
       }
     }
     .delete-icon {
-      margin-left: 12px;
+      margin-left: 4px;
       fill: #000;
       cursor: pointer;
       &:hover {
         transform: scale(1.1);
         fill: #df1c41;
+      }
+    }
+    .edit-icon {
+      margin-left: 4px;
+      fill: #000;
+      cursor: pointer;
+      &:hover {
+        transform: scale(1.1);
+        fill: #d36330;
       }
     }
   }

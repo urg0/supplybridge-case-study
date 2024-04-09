@@ -65,7 +65,7 @@
     justify-content: center;
     width: 100%;
     .news-list {
-      padding: 30px;
+      padding-top: 3px;
       overflow-y: auto;
       width: 90%;
       height: 90%;
@@ -78,10 +78,10 @@
       margin-top: 24px;
       .search-input-container {
         /* align-self: flex-start; */
-        width: 35%;
+        width: 80%;
         display: flex;
         align-items: center;
-        padding: 5px 10px;
+        padding: 2px 4px;
         border: 1px solid #414141;
         border-radius: 8px;
         &:focus-within {
@@ -93,11 +93,11 @@
         }
         .news-search-input {
           width: 100%;
-          /* height: 24px; */
           border: none;
           background-color: inherit;
           padding: 0 10px;
           letter-spacing: 0.7px;
+          font-size: 12px;
         }
         .search-icon {
           fill: #d86d3c;

@@ -20,6 +20,7 @@ import Close from "@assets/icons/close.svg";
 import Back from "@assets/icons/back.svg";
 import NewPost from "@assets/icons/new-post.svg";
 import Delete from "@assets/icons/trash.svg";
+import Edit from "@assets/icons/edit.svg";
 
 class AppIcons {
   static GetIcon(type) {
@@ -68,6 +69,8 @@ class AppIcons {
         return NewPost;
       case "delete":
         return Delete;
+      case "edit":
+        return Edit;
       default:
         return null;
     }

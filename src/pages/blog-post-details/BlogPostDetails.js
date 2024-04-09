@@ -37,7 +37,6 @@ const BlogPostDetails = () => {
   return (
     <>
       <Toaster />
-
       <div className="news-details-container">
         <ReactSVG
           src={BackIcon}
@@ -63,6 +62,7 @@ const BlogPostDetails = () => {
               <BlogPostDetailsActions
                 id={_id}
                 isBookmarked={data.isBookmarked}
+                blogPost={data}
               />
             </div>
             {/* IMPORTANT: Weird looking code because of the lack of the perfect api  */}
